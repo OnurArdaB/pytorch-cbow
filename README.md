@@ -467,12 +467,10 @@ class CBOW(torch.nn.Module):
     def __init__(self, vocab_size, embedding_dim):
         super(CBOW, self).__init__()
 
-        #out: 1 x emdedding_dim
         self.embeddings = torch.nn.Embedding(vocab_size, embedding_dim)
         self.linear1 = torch.nn.Linear(embedding_dim, 128)
         self.activation_function1 = torch.nn.ReLU()
         
-        #out: 1 x vocab_size
         self.linear2 = torch.nn.Linear(128, vocab_size)
         self.activation_function2 = torch.nn.LogSoftmax(dim = -1)
         
